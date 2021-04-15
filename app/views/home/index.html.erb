@@ -1,0 +1,19 @@
+<div class="js-post-lists">
+  <%- @posts.each do |post| %>
+    <div >
+      <%= post.content %>
+      <div >
+        <%= link_to "comments", post_comments_path(post_id: post), class: "js-get-comments-link", data: {post_id: post.id} %>
+        <div class="js-comments-container-<%= post.id %>">
+          <!-- render partial from comments/index.js.erb -->
+        </div>
+        <p>
+          _______________________
+        </p>
+
+      </div>
+    </div>
+  <%- end %>
+</div>
+
+<%= javascript_include_tag "comments/index" %>

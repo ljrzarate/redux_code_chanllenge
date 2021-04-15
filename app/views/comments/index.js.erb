@@ -1,0 +1,1 @@
+$(".js-comments-container-<%=@post.id%>").html("<%= j(render partial: 'comments/comment', collection: @comments ) %>")
