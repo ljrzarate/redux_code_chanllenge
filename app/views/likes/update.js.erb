@@ -1,0 +1,12 @@
+var postContainer = $(".js-comments-container-<%=@post.id%>").parents(".js-post-container");
+console.log("likeeee")
+console.log("<%= @like.present?.inspect %>")
+console.log("<%= @like.present?.inspect %>" == "false")
+console.log("likeeee")
+if("<%= @like.present? %>" == "true" ){
+  postContainer.find(".js-like-post").find("i").removeClass("far").addClass("fas");
+  postContainer.find(".js-like-post").data("liked", "true");
+}else{
+  postContainer.find(".js-like-post").find("i").removeClass("fas").addClass("far");
+  postContainer.find(".js-like-post").data("liked", "false");
+}

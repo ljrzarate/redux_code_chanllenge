@@ -8,8 +8,12 @@
             <%= post.content %>
           </div>
           <div class="">
-            <%= link_to "Comments", post_comments_path(post_id: post), class: "js-get-comments-link", data: {post_id: post.id, turbolinks: false} %>
-            <%= link_to "Hide comments", "javascript:;", class: "js-hide-comments-link hidden", data: {post_id: post.id} %>
+            <%= link_to "Comments", post_comments_path(post_id: post), class: "js-get-comments-link", data: { post_id: post.id} %>
+            <%= link_to "Hide comments", "javascript:;", class: "js-hide-comments-link hidden", data: { post_id: post.id } %>
+            <%= link_to "javascript:;", class: "js-like-post", data: { url: post_likes_path(post), liked: post.liked?(current_user) } do %>
+              <%- is_liked = (post.liked?(current_user) ? "fas" : "far") %>
+              <i class="<%= is_liked %> fa-heart"></i>
+            <%- end %>
           </div>
           <div class="js-comments-container-<%= post.id %> hidden">
             <!-- render partial from comments/index.js.erb -->

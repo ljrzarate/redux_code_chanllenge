@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.where.not(user: current_user).includes(:comments)
+    @posts = Post.where.not(user: current_user).includes(:comments, :likes)
   end
 end

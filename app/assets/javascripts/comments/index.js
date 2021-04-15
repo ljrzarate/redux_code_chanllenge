@@ -26,8 +26,24 @@ $( document ).ready(function() {
     });
   };
 
+  var likePost = function(){
+    $(".js-like-post").on("click", function(){
+      var $this = $(this);
+      $.ajax({
+        data: {
+          authenticity_token: $('[name="csrf-token"]')[0].content,
+          liked: $this.data("liked")
+        },
+        dataType: 'script',
+        url: $this.data("url"),
+        method: "PUT"
+      });
+    });
+  };
+
   getComments();
   hideComments();
+  likePost();
 })
 
 

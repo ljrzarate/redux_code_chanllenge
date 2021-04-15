@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :posts do
     resources :comments
+    resource :likes, only: [:update]
   end
 
 end
