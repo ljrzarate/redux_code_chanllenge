@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   def update
-    @post = Post.find(params[:post_id])
+    @post = Post.includes(:likes).find(params[:post_id])
     if params[:liked] == "false"
       @like = Like.create(post: @post, user: current_user)
     else

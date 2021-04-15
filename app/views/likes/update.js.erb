@@ -10,3 +10,4 @@ if("<%= @like.present? %>" == "true" ){
   postContainer.find(".js-like-post").find("i").removeClass("fas").addClass("far");
   postContainer.find(".js-like-post").data("liked", "false");
 }
+postContainer.find(".js-like-post").find("span").html("<%= @post.reload.likes.size %>");
