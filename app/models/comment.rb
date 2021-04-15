@@ -4,6 +4,6 @@ class Comment < ApplicationRecord
   belongs_to :user
 
   def author
-    self.user.username
+    "@#{self.user.username}"
   end
 end

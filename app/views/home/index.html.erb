@@ -1,19 +1,29 @@
-<div class="js-post-lists">
-  <%- @posts.each do |post| %>
-    <div >
-      <%= post.content %>
-      <div >
-        <%= link_to "comments", post_comments_path(post_id: post), class: "js-get-comments-link", data: {post_id: post.id} %>
-        <div class="js-comments-container-<%= post.id %>">
-          <!-- render partial from comments/index.js.erb -->
+<div class="col-6">
+  <h2> POSTS </h2>
+  <div class="js-post-lists">
+    <%- @posts.each do |post| %>
+      <div class="js-post-container" data-post-id= <%= post.id %> >
+        <div class="card p-3 gap-3 mt-4">
+          <div class="">
+            <%= post.content %>
+          </div>
+          <div class="">
+            <%= link_to "Comments", post_comments_path(post_id: post), class: "js-get-comments-link", data: {post_id: post.id, turbolinks: false} %>
+            <%= link_to "Hide comments", "javascript:;", class: "js-hide-comments-link hidden", data: {post_id: post.id} %>
+          </div>
+          <div class="js-comments-container-<%= post.id %> hidden">
+            <!-- render partial from comments/index.js.erb -->
+          </div>
+          <div class="js-new-comment hidden">
+            <p>New comment:</p>
+            <%= form_with(url: post_comments_path(post_id: post.id)) do |f| %>
+              <%= f.text_field :content, class: "js-new-message-content" %>
+            <%- end %>
+          </div>
         </div>
-        <p>
-          _______________________
-        </p>
-
       </div>
-    </div>
-  <%- end %>
+    <%- end %>
+  </div>
 </div>
 
 <%= javascript_include_tag "comments/index" %>
