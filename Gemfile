@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -42,6 +42,8 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
+gem 'figaro'
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

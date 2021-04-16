@@ -7,6 +7,9 @@
         </p>
         <p class="text-right">
           <%= comment.author %>
+          <%- if comment.user.avatar.attached? %>
+            <%= image_tag comment.user.avatar.variant(resize: "30x30") %>
+          <%-end%>
           <br>
           <%= comment.created_at.strftime("%b, %d %y") %>
         </p>

@@ -15,8 +15,30 @@
   </head>
   <body>
     <div  class="container"">
-      <div class="">
-        <div class="">
+      <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <ul class="navbar-nav ml-auto ml-md-0">
+          <li>
+            <%= link_to "Home", root_path, class: "navbar-brand" %>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if user_signed_in? %>
+                <%- if current_user.avatar.attached? %>
+                  <%= image_tag current_user.avatar.variant(resize: "30x30") %>
+                <%-else%>
+                  <i class="fas fa-user"></i>
+                <%-end %>
+              <% else %>
+                <i class="fas fa-user"></i>
+              <% end %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div>
+        <div>
           <%= yield %>
         </div>
       </div>
