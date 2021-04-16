@@ -5,7 +5,7 @@ class MentionProcessorMailer
 
   def process
     users.each do |user|
-      # TODO delated job
+      MentionMailerJob.perfom_later(user, @comment)
     end
   end
 

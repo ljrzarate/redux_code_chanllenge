@@ -45,6 +45,7 @@ gem 'jquery-rails'
 gem 'figaro'
 gem "aws-sdk-s3", require: false
 gem 'mention_system'
+gem 'delayed_job_active_record'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
