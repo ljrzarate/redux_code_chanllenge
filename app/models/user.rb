@@ -1,13 +1,14 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  act_as_mentionee
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validate :avatar_format
+  validates :username, { presence: true, uniqueness: true }
+
   has_many :posts, dependent: :destroy
   has_one_attached :avatar
-
-  validate :avatar_format
 
   def resize_image
       resized_image = MiniMagick::Image.read(avatar.download)

@@ -9,7 +9,9 @@ class CommentsController < ApplicationController
   def create
     @comment = post.comments.new(comment_params)
     @comment.user = current_user
-    @comment.save!
+    if @comment.save!
+      MentionProcessorMailer.new(@comment).process
+    end
     respond_to do |format|
       format.js
     end

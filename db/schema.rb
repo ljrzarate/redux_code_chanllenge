@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_142804) do
+ActiveRecord::Schema.define(version: 2021_04_16_155231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,20 @@ ActiveRecord::Schema.define(version: 2021_04_16_142804) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "mentions", id: :serial, force: :cascade do |t|
+    t.string "mentionee_type"
+    t.integer "mentionee_id"
+    t.string "mentioner_type"
+    t.integer "mentioner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentionee_id", "mentionee_type", "mentioner_id", "mentioner_type"], name: "mentions_mentionee_mentioner_idx", unique: true
+    t.index ["mentionee_id", "mentionee_type"], name: "mentions_mentionee_idx"
+    t.index ["mentionee_type", "mentionee_id"], name: "index_mentions_on_mentionee_type_and_mentionee_id"
+    t.index ["mentioner_id", "mentioner_type"], name: "mentions_mentioner_idx"
+    t.index ["mentioner_type", "mentioner_id"], name: "index_mentions_on_mentioner_type_and_mentioner_id"
   end
 
   create_table "posts", force: :cascade do |t|
