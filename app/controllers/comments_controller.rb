@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment = post.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save!
-      MentionProcessorMailer.new(@comment).process
+      MentionMailerJob.perform_later(@comment)
     end
     respond_to do |format|
       format.js

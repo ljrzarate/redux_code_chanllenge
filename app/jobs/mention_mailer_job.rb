@@ -1,9 +1,7 @@
 class MentionMailerJob < ApplicationJob
   queue_as :default
 
-  def perform(user, comment)
-    MentionMailer.with(user: user, comment: comment).
-                  mention.
-                  deliver_now
+  def perform(comment)
+    MentionProcessorMailer.new(comment).process
   end
 end

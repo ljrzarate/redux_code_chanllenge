@@ -5,7 +5,9 @@ class MentionProcessorMailer
 
   def process
     users.each do |user|
-      MentionMailerJob.perfom_later(user, @comment)
+      MentionMailer.with(user: user, comment: @comment).
+                        mention.
+                        deliver_now
     end
   end
 
