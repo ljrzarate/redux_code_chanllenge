@@ -13,7 +13,6 @@ class MentionProcessorMailer
 
   private
   def users
-    binding.pry
     MentionProcessor.new.process_mentions(@entity)
   end
 end
