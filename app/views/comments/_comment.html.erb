@@ -3,7 +3,7 @@
     <div class="text-justify">
       <div class="">
         <p>
-          <%= comment.content %>
+          <%= comment.content.html_safe %>
         </p>
         <p class="text-right">
           <%= comment.author %>

@@ -23,7 +23,8 @@
           <div class="js-new-comment hidden">
             <p>New comment:</p>
             <%= form_with(url: post_comments_path(post_id: post.id)) do |f| %>
-              <%= f.text_field :content, class: "js-new-message-content" %>
+              <%= f.text_area :content, class: "js-new-message-content" %>
+              <%= f.submit "send", class: "btn btn-primary", style: "font-size: 17px;" %>
             <%- end %>
           </div>
         </div>

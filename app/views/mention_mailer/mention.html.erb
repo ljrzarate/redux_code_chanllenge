@@ -6,7 +6,7 @@
     <h1>Hola, <%= @user.username %> </h1>
     <p>
       You were mention in a comment: <br>
-      Comment: <%= @comment.content %>
+      Comment: <%= @comment.content.html_safe %>
     </p>
     <p>Have a great day!</p>
   </body>

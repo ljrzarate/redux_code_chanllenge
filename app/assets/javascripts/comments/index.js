@@ -41,6 +41,11 @@ $( document ).ready(function() {
     });
   };
 
+  new FroalaEditor('.js-new-message-content', {
+    toolbarButtons: [['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'],
+                     ['fontFamily', 'fontSize']]
+  })
+
   getComments();
   hideComments();
   likePost();
