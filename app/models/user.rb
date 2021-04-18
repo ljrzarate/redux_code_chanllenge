@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_one_attached :avatar
 
+  before_validation :assign_username
+
   def resize_image
       resized_image = MiniMagick::Image.read(avatar.download)
       resized_image = resized_image.resize "400x400"
@@ -32,5 +34,9 @@ class User < ApplicationRecord
       avatar.purge
       errors.add(:avatar, 'needs to be an image')
     end
+  end
+
+  def assign_username
+    self.username = self.email.split("@")[0]
   end
 end
