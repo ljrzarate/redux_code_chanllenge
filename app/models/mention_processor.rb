@@ -1,6 +1,6 @@
 class MentionProcessor < MentionSystem::MentionProcessor
-  def extract_mentioner_content(comment)
-    comment.content
+  def extract_mentioner_content(entity)
+    entity.content
   end
 
   def find_mentionees_by_handles(*handles)

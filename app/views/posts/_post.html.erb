@@ -1,7 +1,7 @@
 <div class="js-post-container" data-post-id= <%= post.id %> >
   <div class="card p-3 gap-3 mt-4">
     <div>
-      <%= post.content %>
+      <%= post.content.html_safe %>
     </div>
     <div>
       <%= render partial: "posts/single_post_comments", locals: { post: post } %>

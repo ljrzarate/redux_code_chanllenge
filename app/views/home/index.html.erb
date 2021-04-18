@@ -1,6 +1,9 @@
 <div class="col-6">
   <h2> POSTS </h2>
   <div>
+    <%= render partial: "posts/form" %>
+  </div>
+  <div class="js-posts-list">
     <%= render partial: "posts/post", collection: @posts %>
   </div>
 </div>

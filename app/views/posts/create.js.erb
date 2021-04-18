@@ -1,0 +1,4 @@
+var postList = $(".js-posts-list");
+postList.prepend("<%= j(render partial: 'posts/post', locals: { post: @post } ) %>")
+$(".js-new-post").find(".fr-element.fr-view").find("p").html("");
+

@@ -1,7 +1,7 @@
 class MentionMailerJob < ApplicationJob
   queue_as :default
 
-  def perform(comment)
-    MentionProcessorMailer.new(comment).process
+  def perform(entity)
+    MentionProcessorMailer.new(entity).process
   end
 end

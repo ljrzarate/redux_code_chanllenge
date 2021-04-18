@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   root to: "home#index"
   resources :profile, only: [:index]
-  resources :posts do
-    resources :comments
+  resources :posts, only: [:create] do
+    resources :comments, only: [:index, :create]
     resource :likes, only: [:update]
   end
 

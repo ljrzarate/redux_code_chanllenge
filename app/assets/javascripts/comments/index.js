@@ -1,6 +1,6 @@
 $( document ).ready(function() {
   var getComments = function(){
-    $(".js-get-comments-link").on("click", function(event){
+    $("body").on("click", ".js-get-comments-link", function(event){
       event.preventDefault();
       var postId = $(".js-post-container").data("post-id");
       var $this = $(this);
@@ -8,13 +8,16 @@ $( document ).ready(function() {
       $.ajax({
         dataType: 'script',
         url: commentUrl,
-        method: "GET"
+        method: "GET",
+        success: function(){
+          var editor = new FroalaEditor('body > .js-new-message-content')
+        }
       });
     })
   };
 
   var hideComments = function(){
-    $(".js-hide-comments-link").on("click", function(){
+    $("body").on("click", ".js-hide-comments-link", function(){
       var $this = $(this);
       var postId = $this.data("post-id");
       var postContainer = $(".js-comments-container-" + postId).parents(".js-post-container");
@@ -27,7 +30,7 @@ $( document ).ready(function() {
   };
 
   var likePost = function(){
-    $(".js-like-post").on("click", function(){
+    $("body").on("click", ".js-like-post", function(){
       var $this = $(this);
       $.ajax({
         data: {

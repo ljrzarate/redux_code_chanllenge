@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.where.not(user: current_user).includes(:comments, :likes)
+    @post = Post.new
+    @posts = Post.includes(:comments, :likes).order("created_at desc")
   end
 end

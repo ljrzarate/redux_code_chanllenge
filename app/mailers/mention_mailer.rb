@@ -1,7 +1,7 @@
 class MentionMailer < ApplicationMailer
   def mention
     @user = params[:user]
-    @comment = params[:comment]
-    mail(to: @user.email, subject: 'You were mention in a comment - Redux Posts')
+    @entity = params[:entity]
+    mail(to: @user.email, subject: 'You were mention in a entity - Redux Posts')
   end
 end

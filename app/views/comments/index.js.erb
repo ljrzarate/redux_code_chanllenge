@@ -1,7 +1,14 @@
-var postContainer = $(".js-comments-container-<%=@post.id%>").parents(".js-post-container");
-$(".js-comments-container-<%=@post.id%>").removeClass("hidden");
-$(".js-comments-container-<%=@post.id%>").prepend("<%= j(render partial: 'comments/comment', collection: @comments, locals: {post: @post} ) %>");
+$( document ).ready(function() {
+  var postContainer = $(".js-comments-container-<%=@post.id%>").parents(".js-post-container");
+  $(".js-comments-container-<%=@post.id%>").removeClass("hidden");
+  $(".js-comments-container-<%=@post.id%>").prepend("<%= j(render partial: 'comments/comment', collection: @comments, locals: {post: @post} ) %>");
 
-postContainer.find(".js-get-comments-link").addClass("hidden");
-postContainer.find(".js-hide-comments-link").removeClass("hidden");
-postContainer.find(".js-new-comment").removeClass("hidden");
+  postContainer.find(".js-get-comments-link").addClass("hidden");
+  postContainer.find(".js-hide-comments-link").removeClass("hidden");
+  postContainer.find(".js-new-comment").removeClass("hidden");
+
+  new FroalaEditor('.js-new-message-content', {
+    toolbarButtons: [['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'],
+                     ['fontFamily', 'fontSize']]
+  });
+});

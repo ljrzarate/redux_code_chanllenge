@@ -5,8 +5,8 @@
   <body>
     <h1>Hola, <%= @user.username %> </h1>
     <p>
-      You were mention in a comment: <br>
-      Comment: <%= @comment.content.html_safe %>
+      You were mention in a <%= @entity.class.to_s %>: <br>
+      <%= @entity.class.to_s %>: <%= @entity.content.html_safe %>
     </p>
     <p>Have a great day!</p>
   </body>

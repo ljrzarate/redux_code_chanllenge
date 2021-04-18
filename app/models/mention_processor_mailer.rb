@@ -1,11 +1,11 @@
 class MentionProcessorMailer
-  def initialize(comment)
-    @comment = comment
+  def initialize(entity)
+    @entity = entity
   end
 
   def process
     users.each do |user|
-      MentionMailer.with(user: user, comment: @comment).
+      MentionMailer.with(user: user, entity: @entity).
                         mention.
                         deliver_now
     end
@@ -13,6 +13,6 @@ class MentionProcessorMailer
 
   private
   def users
-    MentionProcessor.new.process_mentions(@comment)
+    MentionProcessor.new.process_mentions(@entity)
   end
 end
