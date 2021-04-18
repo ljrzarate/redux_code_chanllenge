@@ -1,0 +1,6 @@
+<div>
+  <%= link_to "javascript:;", class: "js-like-post", data: { url: post_likes_path(post), liked: post.liked?(current_user) } do %>
+    <span> <%= post.likes.size %> </span>
+    <i class="<%= post_liked_css_class(post) %> fa-heart"></i>
+  <%- end %>
+</div>

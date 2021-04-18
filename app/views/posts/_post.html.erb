@@ -1,0 +1,15 @@
+<div class="js-post-container" data-post-id= <%= post.id %> >
+  <div class="card p-3 gap-3 mt-4">
+    <div>
+      <%= post.content %>
+    </div>
+    <div>
+      <%= render partial: "posts/single_post_comments", locals: { post: post } %>
+      <%= render partial: "posts/like", locals: { post: post } %>
+    </div>
+    <div class="js-comments-container-<%= post.id %> hidden">
+      <!-- rendered partial from comments/index.js.erb -->
+    </div>
+    <%= render partial: "comments/form", locals: { post: post } %>
+  </div>
+</div>

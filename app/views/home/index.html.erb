@@ -1,35 +1,7 @@
 <div class="col-6">
   <h2> POSTS </h2>
-  <div class="js-post-lists">
-    <%- @posts.each do |post| %>
-      <div class="js-post-container" data-post-id= <%= post.id %> >
-        <div class="card p-3 gap-3 mt-4">
-          <div class="">
-            <%= post.content %>
-          </div>
-          <div class="">
-            <%= link_to "#{post.comments.size} Comments", post_comments_path(post_id: post), class: "js-get-comments-link", data: { post_id: post.id} %>
-            <%= link_to "Hide comments", "javascript:;", class: "js-hide-comments-link hidden", data: { post_id: post.id } %>
-            <br>
-            <%= link_to "javascript:;", class: "js-like-post", data: { url: post_likes_path(post), liked: post.liked?(current_user) } do %>
-              <%- is_liked = (post.liked?(current_user) ? "fas" : "far") %>
-              <span> <%= post.likes.size %> </span>
-              <i class="<%= is_liked %> fa-heart"></i>
-            <%- end %>
-          </div>
-          <div class="js-comments-container-<%= post.id %> hidden">
-            <!-- render partial from comments/index.js.erb -->
-          </div>
-          <div class="js-new-comment hidden">
-            <p>New comment:</p>
-            <%= form_with(url: post_comments_path(post_id: post.id)) do |f| %>
-              <%= f.text_area :content, class: "js-new-message-content" %>
-              <%= f.submit "send", class: "btn btn-primary", style: "font-size: 17px;" %>
-            <%- end %>
-          </div>
-        </div>
-      </div>
-    <%- end %>
+  <div>
+    <%= render partial: "posts/post", collection: @posts %>
   </div>
 </div>
 

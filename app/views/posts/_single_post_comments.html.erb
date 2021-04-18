@@ -1,0 +1,5 @@
+<div>
+  <%= link_to "#{post.comments.size} Comments", post_comments_path(post_id: post), class: "js-get-comments-link", data: { post_id: post.id} %>
+  <%= link_to "Hide comments", "javascript:;", class: "js-hide-comments-link hidden", data: { post_id: post.id } %>
+  <br>
+</div>
