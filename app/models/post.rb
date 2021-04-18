@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  act_as_mentioner
   validates :content, presence: true
 
   belongs_to :user
