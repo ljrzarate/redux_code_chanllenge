@@ -1,4 +1,4 @@
-<div class="col-6">
+<div class="col">
   <h2> POSTS </h2>
   <div>
     <%= render partial: "posts/form" %>
@@ -6,6 +6,9 @@
   <div class="js-posts-list">
     <%= render partial: "posts/post", collection: @posts %>
   </div>
+</div>
+<div class="col">
+  <%= render partial: "home/user_list" %>
 </div>
 
 <%= javascript_include_tag "comments/index" %>

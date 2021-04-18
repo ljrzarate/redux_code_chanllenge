@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- @users.each do |u| %>
+      <tr>
+        <th ><%= u[0]%></th>
+        <th ><%= u[1]%></th>
+      </tr>
+    <%- end %>
+  </tbody>
+</table>
